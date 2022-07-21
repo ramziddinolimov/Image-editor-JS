@@ -31,6 +31,16 @@ filterElement.forEach(option => {  // buttonlani bosganda xammasini kok qildik
 
 const updateFilter = () => {
     filterValueElement.textContent = `${filterSliderElement.value}%`
+    const selectedFilterElement = document.querySelector(".filter .active")
+    if(selectedFilterElement.id === "brightness") {
+        brightness = filterSliderElement.value
+    } else if(selectedFilterElement.id === "saturation") {
+        saturation = filterSliderElement.value
+    } else if(selectedFilterElement.id === "inversion") {
+        inversion = filterSliderElement.value
+    }  else {
+        grayscale = filterSliderElement.value
+    }
 }
 
 fileInputElement.addEventListener("change", loadImage)
