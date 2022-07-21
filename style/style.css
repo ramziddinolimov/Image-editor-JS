@@ -79,3 +79,17 @@ body {
 .editor-panel .filter button {
     width: calc(100% / 2 - 4px);
 }
+
+.editor-panel button:hover {
+    background: #f5f5f5;
+}
+
+.filter button.active {
+    color: #fff;
+    background: #5372f0;
+    border-color: #5372f0;
+}
+
+.editor-panel .rotate button {
+    width: calc(100% / 4 - 3px);
+}
