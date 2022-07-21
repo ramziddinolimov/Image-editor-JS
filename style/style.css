@@ -58,7 +58,7 @@ body {
     margin-bottom: 12px;
 }
 
-.editor-panel .options {
+.editor-panel .options, .controls {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -120,3 +120,47 @@ body {
 .rotate button:nth-child(4) {
     font-size: 18px;
 }
+
+.wrapper .preview-img {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.preview-img img {
+    /* max-width: 490px;
+    max-height: 335px; */
+    width: 500px;
+    height: 350px;
+    /* height: 100%; */
+    /* object-fit: contain; */
+}
+
+.controls button {
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.controls .reset-filter {
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.controls .choose-img {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.controls .save-img {
+    background-color: #5372f0;
+    border: 1px solid #5372f0;
+    margin-left: 5px;
+}
+
