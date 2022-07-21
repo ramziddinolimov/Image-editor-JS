@@ -51,3 +51,31 @@ body {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+.editor-panel .title {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.editor-panel .options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.editor-panel button {
+    height: 40px;
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    /* padding: 5px;
+    width: 100px; */
+}
+
+.editor-panel .filter button {
+    width: calc(100% / 2 - 4px);
+}
