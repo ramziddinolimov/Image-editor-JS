@@ -60,6 +60,12 @@ const updateFilter = () => {
     }  else {
         grayscale = filterSliderElement.value
     }
+
+    applyFilters()
+}
+
+const applyFilters = () => {
+    previewImgElement.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
 }
 
 fileInputElement.addEventListener("change", loadImage)
