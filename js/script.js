@@ -1,33 +1,34 @@
-const fileInputElement = document.querySelector(".file-input")
-const chooseImgBtnElement = document.querySelector(".choose-img")
-const previewImgElement = document.querySelector(".preview-img img")
-const filterElement = document.querySelectorAll(".filter button")
-const filterNameElement = document.querySelector(".filter-info .name")
-const filterSliderElement = document.querySelector(".slider input")
-const filterValueElement = document.querySelector(".filter-info .value")
+const fileInputElement = document.querySelector(".file-input") // 1
+const chooseImgBtnElement = document.querySelector(".choose-img")  // 2
+const previewImgElement = document.querySelector(".preview-img img")  // 7
+const filterElement = document.querySelectorAll(".filter button")  // 10
+const filterNameElement = document.querySelector(".filter-info .name")  // 12
+const filterSliderElement = document.querySelector(".slider input")  // 14
+const filterValueElement = document.querySelector(".filter-info .value")  // 17
+const rotateElement = document.querySelector(".rotate button")  // 25
 
 
 
-let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;
+let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;  // 19
 
-const loadImage = () => {
+const loadImage = () => {  // 5
     let file = fileInputElement.files[0]
-    if(!file) return
-    previewImgElement.src = URL.createObjectURL(file) // rasm qoshdik
     console.log(file);
-    previewImgElement.addEventListener("load", () => {
+    if(!file) return  // 6
+    previewImgElement.src = URL.createObjectURL(file) // 8 rasm qoshdik
+    previewImgElement.addEventListener("load", () => {  // 9 html va css ga disable qib qoyamiz
         document.querySelector(".container").classList.remove("disable")
         // xammasini disabled qldik
     })
 }
 
-filterElement.forEach(option => {  // buttonlani bosganda xammasini kok qildik
+filterElement.forEach(option => {  // 11-4 qatorni yozamiz buttonlani bosganda xammasini kok qildik
     option.addEventListener("click", () => {
         document.querySelector(".filter .active").classList.remove("active")
         option.classList.add("active")
-        filterNameElement.textContent = option.textContent
+        filterNameElement.textContent = option.textContent  // 13
 
-        if(option.id === "brightness") {
+        if(option.id === "brightness") {  // 22
             filterSliderElement.max = "200"
             filterSliderElement.value = brightness
             filterValueElement.textContent = `${brightness}%`
@@ -48,10 +49,11 @@ filterElement.forEach(option => {  // buttonlani bosganda xammasini kok qildik
 })
 
 const updateFilter = () => {
-    filterValueElement.textContent = `${filterSliderElement.value}%`
-    const selectedFilterElement = document.querySelector(".filter .active")
+    console.log(filterSliderElement.value);  // 16
+    filterValueElement.textContent = `${filterSliderElement.value}%`  // 18
+    const selectedFilterElement = document.querySelector(".filter .active")  // 20
     
-    if(selectedFilterElement.id === "brightness") {
+    if(selectedFilterElement.id === "brightness") {  // 21 Filterni buttonlariga id qoshamiz html
         brightness = filterSliderElement.value
     } else if(selectedFilterElement.id === "saturation") {
         saturation = filterSliderElement.value
@@ -61,13 +63,13 @@ const updateFilter = () => {
         grayscale = filterSliderElement.value
     }
 
-    applyFilters()
+    applyFilters()  // 23
 }
 
-const applyFilters = () => {
+const applyFilters = () => {  // 24
     previewImgElement.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
 }
 
-fileInputElement.addEventListener("change", loadImage)
-chooseImgBtnElement.addEventListener('click', () => fileInputElement.click())
-filterSliderElement.addEventListener("input", updateFilter)
+fileInputElement.addEventListener("change", loadImage)  // 4
+chooseImgBtnElement.addEventListener('click', () => fileInputElement.click())  // 3
+filterSliderElement.addEventListener("input", updateFilter)  // 15
