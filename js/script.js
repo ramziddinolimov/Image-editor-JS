@@ -5,11 +5,17 @@ const filterElement = document.querySelectorAll(".filter button")  // 10
 const filterNameElement = document.querySelector(".filter-info .name")  // 12
 const filterSliderElement = document.querySelector(".slider input")  // 14
 const filterValueElement = document.querySelector(".filter-info .value")  // 17
-const rotateElement = document.querySelector(".rotate button")  // 25
+const rotateElement = document.querySelectorAll(".rotate button")  // 25
 
 
 
 let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;  // 19
+
+rotateElement.forEach(option => {  // 26
+    option.addEventListener("click", () => {
+            console.log(option);
+    })
+})
 
 const loadImage = () => {  // 5
     let file = fileInputElement.files[0]
@@ -69,6 +75,8 @@ const updateFilter = () => {
 const applyFilters = () => {  // 24
     previewImgElement.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
 }
+
+
 
 fileInputElement.addEventListener("change", loadImage)  // 4
 chooseImgBtnElement.addEventListener('click', () => fileInputElement.click())  // 3
