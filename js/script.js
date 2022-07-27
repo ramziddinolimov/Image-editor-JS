@@ -6,6 +6,7 @@ const filterNameElement = document.querySelector(".filter-info .name")  // 12
 const filterSliderElement = document.querySelector(".slider input")  // 14
 const filterValueElement = document.querySelector(".filter-info .value")  // 17
 const rotateElement = document.querySelectorAll(".rotate button")  // 25
+const resetFilterBtnElement = document.querySelector(".reset-filter")  // 30
 
 
 
@@ -84,6 +85,12 @@ const updateFilter = () => {
     applyFilters()  // 23
 }
 
+const resetFilter = () => {  // 32
+    brightness = 100; saturation = 100; inversion = 0; grayscale = 0;
+    rotate = 0; flipHorizontal = 1; flipVertical = 1;
+    applyFilters()
+}
+
 const applyFilters = () => {  // 24
     previewImgElement.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`  // 29
     previewImgElement.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`  // 24
@@ -94,3 +101,4 @@ const applyFilters = () => {  // 24
 fileInputElement.addEventListener("change", loadImage)  // 4
 chooseImgBtnElement.addEventListener('click', () => fileInputElement.click())  // 3
 filterSliderElement.addEventListener("input", updateFilter)  // 15
+resetFilterBtnElement.addEventListener("click", resetFilter)  // 31

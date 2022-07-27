@@ -127,6 +127,10 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 20px;
+    /* horizontal va vertical buttonlani
+     ishlatganimizda qoyamiz */
+     overflow: hidden;
+
 }
 
 .preview-img img {
