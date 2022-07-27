@@ -7,6 +7,7 @@ const filterSliderElement = document.querySelector(".slider input")  // 14
 const filterValueElement = document.querySelector(".filter-info .value")  // 17
 const rotateElement = document.querySelectorAll(".rotate button")  // 25
 const resetFilterBtnElement = document.querySelector(".reset-filter")  // 30
+const saveImgBtnElement = document.querySelector(".save-img")  // 33
 
 
 
@@ -88,7 +89,20 @@ const updateFilter = () => {
 const resetFilter = () => {  // 32
     brightness = 100; saturation = 100; inversion = 0; grayscale = 0;
     rotate = 0; flipHorizontal = 1; flipVertical = 1;
+    filterElement[0].click()
     applyFilters()
+}
+
+const saveImage = () => {  // 35
+    console.log("Save image btn clicked");
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    canvas.width = previewImgElement.naturalWidth
+    canvas.height = previewImgElement.naturalHeight
+    ctx.filter =  `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
+    ctx.drawImage(previewImgElement, 0, 0, canvas.width, canvas.height);
+    document.body.appendChild(canvas)
+    
 }
 
 const applyFilters = () => {  // 24
@@ -102,3 +116,4 @@ fileInputElement.addEventListener("change", loadImage)  // 4
 chooseImgBtnElement.addEventListener('click', () => fileInputElement.click())  // 3
 filterSliderElement.addEventListener("input", updateFilter)  // 15
 resetFilterBtnElement.addEventListener("click", resetFilter)  // 31
+saveImgBtnElement.addEventListener("click", saveImage)  // 34
