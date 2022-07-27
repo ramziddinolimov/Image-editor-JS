@@ -37,6 +37,7 @@ const loadImage = () => {  // 5
     if(!file) return  // 6
     previewImgElement.src = URL.createObjectURL(file) // 8 rasm qoshdik
     previewImgElement.addEventListener("load", () => {  // 9 html va css ga disable qib qoyamiz
+        resetFilterBtnElement.click()  // 36 final
         document.querySelector(".container").classList.remove("disable")
         // xammasini disabled qldik
     })
@@ -101,9 +102,17 @@ const saveImage = () => {  // 35
     canvas.height = previewImgElement.naturalHeight
     ctx.filter =  `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
     ctx.translate(canvas.width / 2, canvas.height / 2)
+    if(rotate !== 0) {
+        ctx.rotate(rotate * Math.PI / 180)
+    }
     ctx.scale(flipHorizontal, flipVertical)
     ctx.drawImage(previewImgElement, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-    document.body.appendChild(canvas)
+    // document.body.appendChild(canvas)
+
+    const link = document.createElement("a")
+    link.download = "image.jpg";
+    link.href = canvas.toDataURL()
+    link.click()
     
 }
 
