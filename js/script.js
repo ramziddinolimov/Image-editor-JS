@@ -10,10 +10,16 @@ const rotateElement = document.querySelectorAll(".rotate button")  // 25
 
 
 let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;  // 19
+let rotate = 0 // 27
 
 rotateElement.forEach(option => {  // 26
     option.addEventListener("click", () => {
             console.log(option);
+            if(option.id === "left") {  // 28
+                rotate -= 90;
+            }  
+
+            applyFilters()
     })
 })
 
@@ -73,6 +79,7 @@ const updateFilter = () => {
 }
 
 const applyFilters = () => {  // 24
+    previewImgElement.style.transform = `rotate(${rotate}deg)`
     previewImgElement.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`
 }
 
